@@ -1,6 +1,6 @@
 # Password Generator Solution
 
-![](./design/preview.webp)
+![](./Asset/design/preview.webp)
 
 ## [Live Site](example.com)
 

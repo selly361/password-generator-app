@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+		<!-- CSS Stylesheet -->
+		<link rel="stylesheet" href="Css/style.css" />
+		<!-- JavaScript -->
+		<script src="js/index.js" defer></script>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>Password Generator</title>
+	</head>
+	<body>
+		<main class="password-generator">
+			<!-- Password Generator Title -->
+			<h2 class="password-generator__title">Password Generator</h2>
+
+			<!-- Generated Password Section -->
+			<section class="password-generator__output-section">
+				<output class="password-generator__output">PTx1f5DaFX</output>
+
+				<div class="password-generator__copy-container">
+					<span class="password-generator__copy-notification">COPIED</span>
+					<button class="password-generator__copy-button">
+						<img src="./assets/images/icon-copy.svg" alt="copy-password icon" />
+					</button>
+				</div>
+			</section>
+
+			<!-- Password Configuration Form -->
+			<form class="password-generator__config">
+				<!-- Password Length Field -->
+				<fieldset class="password-generator__length">
+					<label
+						for="password-length-slider"
+						class="password-generator__length-label"
+						>Character Length</label
+					>
+					<output
+						id="password-length-value"
+						class="password-generator__length-output"
+						>10</output
+					>
+				</fieldset>
+				<input
+					id="password-length-slider"
+					class="password-generator__length-slider"
+					aria-label="Password Length Slider"
+					type="range"
+					min="1"
+					max="20"
+					value="10"
+					autocomplete="off"
+					oninput="updateSliderProgress()"
+				/>
+
+				<!-- Password Configuration Options -->
+				<fieldset class="password-generator__options">
+					<label class="password-generator__option">
+						<input type="checkbox" id="uppercase" value="uppercase" />
+						<div class="password-generator__checkbox"></div>
+						<p>Include Uppercase Letters</p>
+					</label>
+					<label class="password-generator__option">
+						<input type="checkbox" id="lowercase" value="lowercase" />
+						<div class="password-generator__checkbox"></div>
+						<p>Include Lowercase Letters</p>
+					</label>
+					<label class="password-generator__option">
+						<input type="checkbox" id="numbers" value="numbers" />
+						<div class="password-generator__checkbox"></div>
+						<p>Include Numbers</p>
+					</label>
+					<label class="password-generator__option">
+						<input type="checkbox" id="symbols" value="symbols" />
+						<div class="password-generator__checkbox"></div>
+						<p>Include Symbols</p>
+					</label>
+				</fieldset>
+
+				<!-- Password Strength Box -->
+				<div class="password-generator__strength">
+					<span class="password-generator__strength-label">STRENGTH</span>
+					<div class="password-generator__strength-rating">
+						<output class="password-generator__strength-text"></output>
+						<div class="password-generator__strength-bars">
+							<div class="password-generator__bar"></div>
+							<div class="password-generator__bar"></div>
+							<div class="password-generator__bar"></div>
+							<div class="password-generator__bar"></div>
+						</div>
+					</div>
+				</div>
+				<button class="password-generator__generate-button">
+					GENERATE
+					<!-- Arrow Icon -->
+					<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
+						/>
+					</svg>
+				</button>
+			</form>
+		</main>
+	</body>
+</html>

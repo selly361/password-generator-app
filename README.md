@@ -1,4 +1,4 @@
-# Password Generator Solution
+# Password Generator
 
 ![](./Asset/design/preview.webp)
 

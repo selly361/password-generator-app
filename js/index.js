@@ -2,37 +2,49 @@
 
 const passwordResult = document.querySelector('.password-generator__output')
 const copyButton = document.querySelector('.password-generator__copy-button')
-const copyNotification = document.querySelector('.password-generator__copy-notification')
+const copyNotification = document.querySelector(
+	'.password-generator__copy-notification'
+)
 const passwordConfig = document.querySelector('.password-generator__config')
-const passwordLengthSlider = document.querySelector('.password-generator__length-slider')
-const passwordLengthCount = document.querySelector('.password-generator__length-output')
+const passwordLengthSlider = document.querySelector(
+	'.password-generator__length-slider'
+)
+const passwordLengthCount = document.querySelector(
+	'.password-generator__length-output'
+)
 const uppercaseCheckbox = document.querySelector('#uppercase')
 const lowercaseCheckbox = document.querySelector('#lowercase')
 const numbersCheckbox = document.querySelector('#numbers')
 const symbolsCheckbox = document.querySelector('#symbols')
-const passwordStrengthText = document.querySelector('.password-generator__strength-text')
-const passwordStrengthBars = document.querySelectorAll('.password-generator__bar')
-const generatePasswordButton = document.querySelector('.password-generator__generate-button')
+const passwordStrengthText = document.querySelector(
+	'.password-generator__strength-text'
+)
+const passwordStrengthBars = document.querySelectorAll(
+	'.password-generator__bar'
+)
+const generatePasswordButton = document.querySelector(
+	'.password-generator__generate-button'
+)
 
 let userCanCopy = false
 
 /* Calculate Password Strength */
 
 function calculateStrength(passwordLength, config) {
-	let strength = 0
-	strength +=
-		passwordLength < 4
-			? 10
-			: passwordLength < 6
+	const typeCount = Object.values(config).filter((value) => value).length
+	const lengthScore =
+		passwordLength >= 12
 			? 40
-			: passwordLength < 8
-			? 60
-			: passwordLength <= 15
-			? 80
-			: 100
-	strength += Object.values(config).filter((value) => value).length * 10
-	return Math.min(strength, 100) /* Ensures strength doesn't exceed 100 */
-
+			: passwordLength >= 8
+			? 30
+			: passwordLength >= 6
+			? 20
+			: passwordLength >= 4
+			? 10
+			: 0
+	const typeScore = typeCount * 15 // 15 points per character type selected
+	let strength = lengthScore + typeScore
+	return Math.min(strength, 100) // Ensures strength doesn't exceed 100
 }
 
 /* Generate Password */
@@ -62,7 +74,8 @@ function generatePassword() {
 	Object.keys(config).forEach((key) => {
 		if (config[key]) {
 			passwordChars += characters[key]
-			generatedPassword += characters[key][Math.floor(Math.random() * characters[key].length)]
+			generatedPassword +=
+				characters[key][Math.floor(Math.random() * characters[key].length)]
 			length--
 		}
 	})

@@ -117,8 +117,8 @@ function updateSliderProgress() {
 	const sliderValue = passwordLengthSlider.value
 	passwordLengthCount.textContent = sliderValue
 	passwordLengthSlider.style.background = `linear-gradient(to right, #a4ffaf ${
-		sliderValue * 5 - 5
-	}%, #18171f ${sliderValue * 5 - 5}%)`
+		(sliderValue * 5) - 5
+	}%, #18171f ${(sliderValue * 5) - 5}%)`
 }
 
 /* Update Generate Button State */
